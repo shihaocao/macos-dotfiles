@@ -1,0 +1,6 @@
+~/.skhdrc
+~/.yabairc
+~/.sketchybarrc
+~/.config/karabiner
+~/.config/linearmouse
+~/.config/sketchybar
