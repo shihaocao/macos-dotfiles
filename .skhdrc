@@ -4,19 +4,19 @@
 # kickstart yabai 
 hyper - y : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 # lock screen immediately
-cmd - escape : pmset displaysleepnow 
+hyper - escape : pmset displaysleepnow 
 # logout
-cmd + shift - e : osascript -e 'tell app "System Events" to log out'
+hyper + shift - e : osascript -e 'tell app "System Events" to log out'
 # power down 
-cmd + shift - p : osascript -e 'tell app "System Events" to shut down'
+hyper + shift - p : osascript -e 'tell app "System Events" to shut down'
 # reboot
-cmd + shift - b : osascript -e 'tell app "System Events" to restart'
+hyper + shift - b : osascript -e 'tell app "System Events" to restart'
 # sleep 
-cmd + shift - s : osascript -e 'tell application "System Events" to sleep'
+hyper + shift - s : osascript -e 'tell application "System Events" to sleep'
 
 # === launch commands ===
 # open kitty terminal, blazingly fast compared to iTerm/Hyper
-cmd - return : /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
+cmd - return : open -na /System/Applications/Utilities/Terminal.app
 # open firefox
 cmd + shift - return : open -na /Applications/Google\ Chrome.app
 # open vscode
@@ -56,7 +56,7 @@ cmd - right : yabai -m window --focus east
 # space focus and creation
 cmd - tab : yabai -m space --focus next || yabai -m space --focus first
 cmd + shift - tab : yabai -m space --focus prev || yabai -m space --focus last
-cmd - x : yabai -m space --focus recent
+# cmd - x : yabai -m space --focus recent
 cmd - 1 : yabai -m space --focus 1
 cmd - 2 : yabai -m space --focus 2
 cmd - 3 : yabai -m space --focus 3
@@ -66,6 +66,7 @@ cmd - 6 : yabai -m space --focus 6
 cmd - 7 : yabai -m space --focus 7
 cmd - 8 : yabai -m space --focus 8
 cmd - 9 : yabai -m space --focus 9
+cmd - 0 : yabai -m space --focus 10
 
 # create a space
 hyper - n : yabai -m space --create; \
@@ -81,13 +82,16 @@ cmd + shift - j : yabai -m window --warp south
 cmd + shift - k : yabai -m window --warp north
 cmd + shift - l : yabai -m window --warp east
 
-cmd + shift - left : yabai -m window --warp west
+# cmd + shift - left : yabai -m window --warp west
 cmd + shift - down : yabai -m window --warp south
 cmd + shift - up : yabai -m window --warp north
-cmd + shift - right : yabai -m window --warp east
+# cmd + shift - right : yabai -m window --warp east
+
+cmd + shift - left : /bin/bash ./.config/yabaiscripts/move-west.sh
+cmd + shift - right : /bin/bash ./.config/yabaiscripts/move-east.sh
 
 # send window to space 
-cmd + shift - x : yabai -m window --space recent
+# cmd + shift - x : yabai -m window --space recent
 cmd + shift - 1 : yabai -m window --space 1
 cmd + shift - 2 : yabai -m window --space 2
 cmd + shift - 3 : yabai -m window --space 3
@@ -96,6 +100,8 @@ cmd + shift - 5 : yabai -m window --space 5
 cmd + shift - 6 : yabai -m window --space 6
 cmd + shift - 7 : yabai -m window --space 7
 cmd + shift - 8 : yabai -m window --space 8
+cmd + shift - 9 : yabai -m window --space 9
+cmd + shift - 0 : yabai -m window --space 10
 
 # Move focus + window to space
 cmd + ctrl - m : yabai -m window --space last; yabai -m space --focus last
@@ -105,6 +111,14 @@ cmd + ctrl - 1 : yabai -m window --space 1; yabai -m space --focus 1
 cmd + ctrl - 2 : yabai -m window --space 2; yabai -m space --focus 2
 cmd + ctrl - 3 : yabai -m window --space 3; yabai -m space --focus 3
 cmd + ctrl - 4 : yabai -m window --space 4; yabai -m space --focus 4
+
+# Move focus + window to space (Continued)
+cmd + ctrl - 5 : yabai -m window --space 5; yabai -m space --focus 5
+cmd + ctrl - 6 : yabai -m window --space 6; yabai -m space --focus 6
+cmd + ctrl - 7 : yabai -m window --space 7; yabai -m space --focus 7
+cmd + ctrl - 8 : yabai -m window --space 8; yabai -m space --focus 8
+cmd + ctrl - 9 : yabai -m window --space 9; yabai -m space --focus 9
+cmd + ctrl - 0 : yabai -m window --space 10; yabai -m space --focus 10
 
 # Equalize size of windows
 hyper - e : yabai -m space --balance
